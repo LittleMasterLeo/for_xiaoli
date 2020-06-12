@@ -27,7 +27,6 @@ pthread_t tid_rrulas,tid_get_muscle_data;
 
 void start_robot(int sfd)
 {
-	
 	if(robot_control_sign == 0){
 		if (strcmp(cmd,force_mode_zero) == 0){
 			get_force_mode = 4;
@@ -96,11 +95,11 @@ void stop_muscle_equipment()
 void mode_choice_control(int sfd)
 {
 	if (strcmp(cmd,cnt_rob) == 0 || CR == 1){
-		if(CR == 0){
+		if(CR == 0)
 			printf("receive connect robot!\n");
-			CR = 1;
-			start_robot(sfd);
-		}else if(strcmp(cmd, dnt_rob) == 0){
+		start_robot(sfd);
+		CR = 1;
+		if(strcmp(cmd, dnt_rob) == 0){
 			cout<<"receive disconnect robot!"<<endl;
 			stop_robot();
 			CR = 0;
