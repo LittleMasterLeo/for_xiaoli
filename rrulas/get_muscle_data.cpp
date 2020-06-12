@@ -151,7 +151,7 @@ void *get_muscle_data(void *p)
                 return 0;
         }
         */
-		auxSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	auxSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         sinRemote.sin_port = htons(50044);
         if (connect(auxSock, (struct sockaddr*)&sinRemote, sizeof(struct sockaddr_in)) == -1)
         {
