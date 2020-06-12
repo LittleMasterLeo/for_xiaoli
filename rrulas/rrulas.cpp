@@ -21,7 +21,7 @@ extern int set_k;
 //UrDriver ur3(rt_msg_cond_, msg_cond_,"10.193.0.45",0);
 //std::mutex msg_lock;
 //std::unique_lock<std::mutex> locker(msg_lock);
-double q_start[6] = {-0.9100, -1.9109, -2.5350, -0.2569, 1.5920, 6.2692};//start position for 111111
+//double q_start[6] = {-0.9100, -1.9109, -2.5350, -0.2569, 1.5920, 6.2692};//start position for 111111
 
 void getq(UrDriver *ur3, std::condition_variable *rt_msg_cond_, double q[6])
 {
