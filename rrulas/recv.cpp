@@ -44,20 +44,6 @@ void start_robot(int sfd)
 			return;
 		}
 		
-	}else if(strcmp(cmd,c_s_k) == 0){
-			cout<<"receive change set_k!"<<endl;
-			bzero(buff_sk,sizeof(buff_sk));
-			int ret = recv(sfd,buff_sk,sizeof(buff_sk),MSG_WAITALL);
-			if (ret <= 0){
-				printf("can not recive set_k\n");
-				return;
-			}
-			memset(&setting_change, 0, sizeof(setting_change));
-			memcpy(&setting_change, buff_sk, sizeof(setting_change));
-			if (setting_change.flag == 1)
-				set_k = setting_change.value;
-			cout<<"receive change set_k successful!"<<endl;
-			return;
 	}else{
 			cout<<"robot has already started!"<<endl;
 	}		
@@ -110,24 +96,40 @@ void stop_muscle_equipment()
 void mode_choice_control(int sfd)
 {
 	if (strcmp(cmd,cnt_rob) == 0 || CR == 1){
-		printf("receive connect robot!\n");
-		CR = 1;
-		start_robot(sfd);
-		if(strcmp(cmd, dnt_rob) == 0){
+		if(CR == 0){
+			printf("receive connect robot!\n");
+			CR = 1;
+			start_robot(sfd);
+		}else if(strcmp(cmd, dnt_rob) == 0){
 			cout<<"receive disconnect robot!"<<endl;
 			stop_robot();
 			CR = 0;
 		}
 	}
 	if(strcmp(cmd,cnt_msc_epm) == 0 || CME == 1){
-		cout<<"receive connect muscle equipment!"<<endl;
-		CME = 1;
-		start_muscle_equipment(sfd);
-		if(strcmp(cmd, dnt_msc_epm) == 0){
+		if(CME == 0){
+			cout<<"receive connect muscle equipment!"<<endl;
+			CME = 1;
+			start_muscle_equipment(sfd);
+		}else if(strcmp(cmd, dnt_msc_epm) == 0){
 			cout<<"receive disconnect muscle equipment!"<<endl;
 			stop_muscle_equipment();
 			CME = 0;
 		}
+	}
+	if(strcmp(cmd,c_s_k) == 0){
+		cout<<"receive change set_k!"<<endl;
+		bzero(buff_sk,sizeof(buff_sk));
+		int ret = recv(sfd,buff_sk,sizeof(buff_sk),MSG_WAITALL);
+		if (ret <= 0){
+			printf("can not recive set_k\n");
+			return;
+		}
+		memset(&setting_change, 0, sizeof(setting_change));
+		memcpy(&setting_change, buff_sk, sizeof(setting_change));
+		if (setting_change.flag == 1)
+			set_k = setting_change.value;
+		cout<<"receive change set_k successful!"<<endl;
 	}
 	return;
 }
