@@ -43,7 +43,7 @@ void start_robot(int sfd)
 			return;
 		}
 		
-	}else{
+	}else if(robot_control_sign == 1){
 			cout<<"robot has already started!"<<endl;
 	}		
 
@@ -56,6 +56,7 @@ void stop_robot()
 		pthread_cancel(tid_rrulas);
 		cout<<"robot stop successfully"<<endl;
 		robot_control_sign = 0;
+		return;
 	}else{
 		cout<<"robot dose not start or can not stop!"<<endl;
 	}
@@ -97,13 +98,14 @@ void mode_choice_control(int sfd)
 	if (strcmp(cmd,cnt_rob) == 0 || CR == 1){
 		if(CR == 0)
 			printf("receive connect robot!\n");
-		start_robot(sfd);
-		CR = 1;
 		if(strcmp(cmd, dnt_rob) == 0){
 			cout<<"receive disconnect robot!"<<endl;
 			stop_robot();
 			CR = 0;
+			return;
 		}
+		start_robot(sfd);
+		CR = 1;
 	}
 	if(strcmp(cmd,cnt_msc_epm) == 0 || CME == 1){
 		if(CME == 0){
