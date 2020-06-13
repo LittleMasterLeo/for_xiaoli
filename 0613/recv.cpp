@@ -138,7 +138,7 @@ void *recv_info_up(void *p)
 		bzero(buff,sizeof(buff));
 		ret = recv(sfd, buff, sizeof(setting_change), MSG_WAITALL);
 		if(ret <= 0){
-			printf("can not receive buff!\n")
+			printf("can not receive buff!\n");
 			break;
 		}
 		memset(&setting_change, 0, sizeof(setting_change));
