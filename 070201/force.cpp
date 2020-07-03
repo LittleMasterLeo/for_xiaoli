@@ -269,7 +269,7 @@ void forceControl(UrDriver *ur3, std::condition_variable *rt_msg_cond_, int run_
 	strcpy(file_name_leo,"/home/xiaoli/Documents/xiaoli/data_xiaoli/logs/leo_test");
 	strcat(file_name_leo,sTemp);
 	strcat(file_name_leo,".txt");
-	forcelog.open(file_name_leo,std::ofstream::app);
+	leo_test.open(file_name_leo,std::ofstream::app);
 	
 	//Control system for translation forces
 	double integrator_Fx = 0, integrator_Fy = 0, integrator_Fz = 0;
@@ -292,7 +292,7 @@ void forceControl(UrDriver *ur3, std::condition_variable *rt_msg_cond_, int run_
 	//=======================================================================
 	//double references[6] = {0,0,0,0,0,0}; //ref_Fx, ref_Fy, ref_Fz, ref_Tx, ref_Ty, ref_Tz
 	double references[6] = {0,0,0,0,0,0};
-    double speed[6] = {0,0,0,0,0,0};
+    	double speed[6] = {0,0,0,0,0,0};
 	double vw[6] = {0,0,0,0,0,0};
 
 	//End-effector tool bias: a constant mounting bias and a dynamic gravity bias.
@@ -846,7 +846,7 @@ void forceControl(UrDriver *ur3, std::condition_variable *rt_msg_cond_, int run_
 	}	
 	
 	//stopFT(&forceID);
-	
+	leo_test.close();
 	forcelog.close();
 }
 
