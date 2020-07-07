@@ -24,7 +24,7 @@ void emg_data::on_start_Button_clicked()
 void emg_data::Recvdata()
 {
     char recvMsg[1728] = {0};
-    float emg_data[432] = {0};
+    float emg_data[432] = {-1};
     int i;
     int recvRe = socket->read(recvMsg,sizeof(recvMsg));
     if(recvRe == -1)
