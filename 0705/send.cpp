@@ -6,7 +6,7 @@ extern float emg_data_flt;
 
 void *send_info_up(void *p)
 {
-	int type,ret;
+//	int type,ret;
 	int sfd = *((int *)p);
 	
 	for(;;){
