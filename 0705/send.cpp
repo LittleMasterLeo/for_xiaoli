@@ -12,7 +12,7 @@ void *send_info_up(void *p)
 	for(;;){
 		//send(sfd, "hello",5,0);
 		//char msg[1024] = "world!";
-		send(sfd, emg_data_flt, SZ_DATA_EMG,0);
+		send(sfd, (char *)emg_data_flt, SZ_DATA_EMG,0);
 		sleep(2);
 	}
 	printf("client is end\n");
