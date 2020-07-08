@@ -13,7 +13,7 @@ void *send_info_up(void *p)
 		//send(sfd, "hello",5,0);
 		//char msg[1024] = "world!";
 		send(sfd, emg_data_flt, SZ_DATA_EMG,0);
-		sleep(2);
+		sleep(1);
 	}
 	printf("client is end\n");
 	pthread_exit(0);
