@@ -2,7 +2,7 @@
 
 using namespace std;
 
-extern float *emg_data_flt;
+extern float emg_data_flt[];
 
 void *send_info_up(void *p)
 {
