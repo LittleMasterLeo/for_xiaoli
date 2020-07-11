@@ -34,7 +34,7 @@ void *send_info_up(void *p)
 				robot_data_ready = 0;
 			}
 		}
-		send(sfd, load_data, sizeof(load_data), 0);
+		send(sfd, &load_data, sizeof(load_data), 0);
 		//send(sfd, emg_data_flt, SZ_DATA_EMG,0);
 		sleep(1);
 	}
