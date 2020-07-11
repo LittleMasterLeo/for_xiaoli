@@ -51,6 +51,14 @@ typedef struct change_setting{
 	char cmd[30];
 }cs_t;
 
+typedef struct up_data{
+	int emg_data_ready;
+	int robot_data_ready;
+	float emg_data[432];
+	double force_data[3];
+	double vector_data[3];
+}data_t;
+
 // MOUNTING ANGLE OFFSET BETWEEN F/T SENSOR AND PROTOTYPE 1.1 (PHYSICAL INTERFACE BETWEEN END-EFFECTOR AND PATIENT) 
 #define TCP_OFFSET 0
 
