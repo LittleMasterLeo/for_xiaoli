@@ -48,6 +48,7 @@ typedef struct change_setting{
 	int flag;
 	int mode;
 	int value;
+	char cmd[30];
 }cs_t;
 
 // MOUNTING ANGLE OFFSET BETWEEN F/T SENSOR AND PROTOTYPE 1.1 (PHYSICAL INTERFACE BETWEEN END-EFFECTOR AND PATIENT) 
